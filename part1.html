@@ -46,6 +46,7 @@
       }
 
       function create() {
+        // Game Board (static objects)
         this.add.image(400, 300, "sky");
 
         platforms = this.physics.add.staticGroup();
@@ -56,6 +57,7 @@
         platforms.create(50, 250, "ground");
         platforms.create(750, 220, "ground");
 
+        // Dynamic Objects
         player = this.physics.add.sprite(100, 450, "dude");
 
         player.setBounce(0.2);
@@ -71,6 +73,7 @@
           child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
         });
 
+        // Animations
         this.anims.create({
           key: "left",
           frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
@@ -91,6 +94,7 @@
           repeat: -1,
         });
 
+        // Colliders & Overlaps
         this.physics.add.collider(player, platforms);
         this.physics.add.collider(stars, platforms);
 
